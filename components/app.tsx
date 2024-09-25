@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Book, Calendar, Music, Heart, BookOpen, Facebook, Chrome} from "lucide-react"
-import Image from "next/image"
+//import Image from "next/image"
 import Link from "next/link"
 
 // Componentes para cada sección
@@ -41,7 +42,7 @@ const Event = ({ title, description, dateTime, location, mapLink }) => (
 const DailyVerse = ({ message, reference }) => (
   <Card className="mb-4">
     <CardContent className="text-center p-6">
-      <p className="text-lg font-semibold mb-4">"{message}"</p>
+      <p className="text-lg font-semibold mb-4">{message}</p>
       <p className="text-sm text-gray-600">{reference}</p>
     </CardContent>
   </Card>
@@ -338,6 +339,7 @@ const MainScreen = ({ onLogout }) => {
 
 export function AppComponent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [user, setUser] = useState(null)
 
   const handleLogin = (email) => {
