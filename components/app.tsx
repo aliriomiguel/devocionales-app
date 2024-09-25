@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Book, Calendar, Music, Heart, BookOpen, Facebook, Mail, Chrome, Search, Menu } from "lucide-react"
+import { Book, Calendar, Music, Heart, BookOpen, Facebook, Chrome} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -230,6 +230,27 @@ const MainScreen = ({ onLogout }) => {
     }
   }
 
+  const getCardTitle = (section) => {
+    switch (section) {
+      case "'home'":
+        return "Inicio";
+      case "'devotionals'":
+        return "Devocional del Día";
+      case "'events'":
+        return "Eventos";
+      case "'verse'":
+        return "Versículo";
+      case "'prayers'":
+        return "Oraciones";
+      case "'search'":
+        return "Búsqueda";
+      case "'menu'":
+        return "Menú";
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-blue-50 p-4 flex flex-col">
       <header className="flex justify-between items-center mb-6">
@@ -246,13 +267,7 @@ const MainScreen = ({ onLogout }) => {
 
       <Card className="mb-6 flex-grow">
         <CardHeader>
-          <CardTitle>{activeSection === "'devotionals'" ? "Devocional del Día" : null}</CardTitle>
-          <CardTitle>{activeSection === "'events'" ? "Eventos" : null}</CardTitle>
-          <CardTitle>{activeSection === "'prayers'" ? "Oraciones" : null}</CardTitle>
-          <CardTitle>{activeSection === "'menu'" ? "Menu" : null}</CardTitle>
-          <CardTitle>{activeSection === "'verse'" ? "Versiculos" : null}</CardTitle>
-          <CardTitle>{activeSection === "'search'" ? "Busqueda" : null}</CardTitle>
-          <CardTitle>{activeSection === "'home'" ? "Inicio" : null}</CardTitle>
+          <CardTitle>{getCardTitle(activeSection)}</CardTitle>
         </CardHeader>
         <CardContent>
           {renderContent()}
