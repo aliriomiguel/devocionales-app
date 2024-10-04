@@ -9,6 +9,10 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Book, Calendar, Music, Heart, BookOpen, Facebook, Chrome} from "lucide-react"
 //import Image from "next/image"
 import Link from "next/link"
+import  Dropdown from "@/components/ui/Dropdown"
+import '@/app/styles.css';
+
+
 
 // Componentes para cada sección
 const Devotional = ({ author, country, message, date }) => (
@@ -52,7 +56,7 @@ const PrayerRequest = ({ message, name, country }) => (
   <Card className="mb-4">
     <CardContent>
       <p>{message}</p>
-      <p className="text-sm text-gray-600 mt-2">Solicitado por: {name} - {country}</p>
+      <p className="text-sm text-gray-600 mt-2">Solicitado por: <strong> {name} - {country} </strong></p>
     </CardContent>
   </Card>
 )
@@ -142,7 +146,7 @@ const MainScreen = ({ onLogout }) => {
     switch (activeSection) {
       case "'devotionals'":
         return (
-          <ScrollArea className="h-[calc(100vh-280px)]">
+          <ScrollArea className="container mx-auto h-[calc(100vh-280px)]">
             <Devotional
               author="Juan Pérez"
               country="México"
@@ -159,7 +163,7 @@ const MainScreen = ({ onLogout }) => {
         )
       case "'events'":
         return (
-          <ScrollArea className="h-[calc(100vh-280px)]">
+          <ScrollArea className="container mx-auto h-[calc(100vh-280px)]">
             <Event
               title="Retiro Espiritual"
               description="Un fin de semana para renovar tu fe y conectar con Dios."
@@ -178,14 +182,16 @@ const MainScreen = ({ onLogout }) => {
         )
       case "'verse'":
         return (
+          <ScrollArea className="container mx-auto h-[calc(100vh-280px)]">
           <DailyVerse
             message="Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para todo aquel en él cree, no se pierda, mas tenga vida eterna."
             reference="Juan 3:16"
           />
+</ScrollArea>
         )
       case "'prayers'":
         return (
-          <ScrollArea className="h-[calc(100vh-280px)]">
+          <ScrollArea className="container mx-auto h-[calc(100vh-280px)]">
             <PrayerRequest
               message="Por favor, oren por la salud de mi madre."
               name="Carlos Rodríguez"
@@ -200,7 +206,7 @@ const MainScreen = ({ onLogout }) => {
         )
       case "'home'":
         return(
-          <ScrollArea className="h-[calc(100vh-280px)]">
+          <ScrollArea className="container mx-auto h-[calc(100vh-280px)]">
             <Devotional
               author="Juan Pérez"
               country="México"
@@ -260,6 +266,7 @@ const MainScreen = ({ onLogout }) => {
           <Button onClick={toggleMusic} variant="outline" size="icon">
             <Music className={`h-4 w-4 ${isPlaying ? "'text-blue-600'" : "'text-gray-600'"}`} />
           </Button>
+          <Dropdown />
           <Button onClick={onLogout} variant="outline" size="sm">
             Cerrar sesión
           </Button>
@@ -275,7 +282,7 @@ const MainScreen = ({ onLogout }) => {
         </CardContent>
       </Card>
 
-      <nav className="grid grid-cols-7 gap-2 p-2 bg-white border-t">
+      <nav className="grid grid-cols-7 gap-2 p-2 bg-white border-t hidden-mobile">
         <Button
           variant={activeSection === "'home'" ? 'default' : 'outline'}
           onClick={() => setActiveSection("'home'")}
