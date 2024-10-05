@@ -24,7 +24,7 @@ function Dropdown() {
 
 
       {isOpen && (
-        <div className="absolute top-20 flex flex-col items-start rounded-lg w-full dropdown bg-blue-50">
+        <div className="absolute top-20 flex flex-col items-start rounded-lg w-full dropdown bg-blue-50 shadow-md">
 
           <span className="text-sm">Inicio</span>
 
